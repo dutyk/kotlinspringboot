@@ -1,0 +1,41 @@
+server:
+  port: 8082
+spring:
+  application:
+    name: rocketmq-stream
+  cloud:
+    stream:
+      rocketmq:
+        binder:
+          name-server: localhost:9876
+        bindings:
+          input1:
+            consumer:
+              orderly: true
+              tags: tagStr0
+          input2:
+            consumer:
+              orderly: false
+              tags: tagStr1
+      bindings:
+        output1:
+          destination: test-topic
+          content-type: text/plain
+          producer:
+            partitionKeyExpression: headers['partitionKey']
+            partitionCount: 2
+        input1:
+          destination: test-topic
+          content-type: text/plain
+          group: test-consumer-group1
+          consumer:
+            instance-index: 0  #用那个分区来接收消息
+            instance-count: 2  #分区数
+        input2:
+          destination: test-topic
+          content-type: text/plain
+          group: test-consumer-group2
+          consumer:
+            concurrency: 20
+            instance-index: 1  #用那个分区来接收消息
+            instance-count: 2  #分区数

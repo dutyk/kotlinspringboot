@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: consul-config
+  cloud:
+    consul:
+      host: 127.0.0.1
+      port: 8500
+      config:
+        prefix: config
+        enabled: true
+        format: yaml
+        data-key: data
+  profiles:
+    active: dev
+
+server:
+  port: 8065

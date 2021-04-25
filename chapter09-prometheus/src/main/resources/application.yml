@@ -1,0 +1,19 @@
+server:
+  port: 8090
+spring:
+  application:
+    name: springboot-prometheus
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    prometheus:
+      enabled: true
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+    tags:
+      application: ${spring.application.name}

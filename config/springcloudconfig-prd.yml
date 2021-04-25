@@ -1,0 +1,5 @@
+data:
+  env: prd
+  user:
+    username: user_prd
+    password: password_prd

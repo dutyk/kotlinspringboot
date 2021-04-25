@@ -1,0 +1,8 @@
+server:
+  port: 8006
+spring:
+  application:
+    name: zk-consumer
+  cloud:
+    zookeeper:
+      connect-string: localhost:2181

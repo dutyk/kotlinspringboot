@@ -1,0 +1,22 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: sentinel-app
+  cloud:
+    sentinel:
+      datasource:
+        ds1:
+          file:
+            file: classpath:flowrule.json
+            data-type: json
+            rule-type: flow
+        ds2:
+          nacos:
+            server-addr: localhost:8848
+            data-id: ${spring.application.name}-rule
+            group-id: DEFAULT_GROUP
+            rule-type: flow
+      transport:
+        dashboard: localhost:8080
+      eager: true

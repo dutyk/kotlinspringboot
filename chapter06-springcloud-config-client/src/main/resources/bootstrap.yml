@@ -1,0 +1,10 @@
+server:
+  port: 8061
+spring:
+  application:
+    name: springcloudconfig
+  cloud:
+    config:
+      label: master
+      profile: dev
+      uri: http://localhost:8060

@@ -1,0 +1,23 @@
+server:
+  port: 8087
+dubbo:
+  scan:
+    # dubbo 服务扫描基准包
+    base-packages: io.kang.provider.dubbo
+  protocol:
+    # dubbo 协议
+    name: dubbo
+    # dubbo 协议端口（ -1 表示自增端口，从 20880 开始）
+    port: -1
+  registry:
+    # 挂载到 Nacos 注册中心
+    address: nacos://127.0.0.1:8848
+  cloud:
+    subscribed-services: ""
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+  application:
+    name: dubbo-provider

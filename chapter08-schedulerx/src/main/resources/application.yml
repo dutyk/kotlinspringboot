@@ -1,0 +1,11 @@
+server:
+  port: 8084
+spring:
+  application:
+    name: SCX-APP
+  cloud:
+    alicloud:
+      scx:
+        group-id: ***
+      edas:
+        namespace: cn-test

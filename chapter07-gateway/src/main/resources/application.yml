@@ -1,0 +1,38 @@
+server:
+  port: 8071
+spring:
+  application:
+    name: gateway-app
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true # 是否和服务注册与发现组件结合，设置为 true 后可以直接使用应用名称调用服务
+      routes:
+        - id: provide-server
+          uri: lb://provider-server
+          predicates:
+            - Path=/provide/**
+          filters:
+            ## 截取路径位数
+            - StripPrefix=1
+            - name: Hystrix
+              args:
+                name: fallBackBean
+                fallbackUri: forward:/fallback
+            - name: RequestRateLimiter
+              args:
+                ### 限流过滤器的 Bean 名称
+                key-resolver: '#{@apiKeyResolver}'
+                ### 希望允许用户每秒处理多少个请求
+                redis-rate-limiter.replenishRate: 1
+                ### 用户允许在一秒钟内完成的最大请求数
+                redis-rate-limiter.burstCapacity: 3
+  redis:
+    host: localhost
+    prot: 6379
+    password: 123456
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/

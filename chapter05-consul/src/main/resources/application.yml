@@ -1,0 +1,11 @@
+server:
+  port: 8080
+spring:
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        service-name: ${spring.application.name}
+  application:
+    name: consul-producer

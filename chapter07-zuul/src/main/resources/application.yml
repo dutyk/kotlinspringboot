@@ -1,0 +1,14 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+server:
+  port: 8070
+ribbon:
+  eureka:
+    enabled: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh,health,info

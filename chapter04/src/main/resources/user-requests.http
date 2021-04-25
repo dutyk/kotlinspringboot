@@ -1,0 +1,27 @@
+### Send POST request with json body
+GET http://localhost:8080/login
+Authorization: Basic test02 test02
+###
+
+### Send POST request with json body
+GET http://localhost:8080/hello/admin
+Authorization: Basic test02 test02
+###
+
+### Send POST request with json body
+POST http://localhost:8080/user/prefilter
+Authorization: Basic test02 test02
+Content-Type: application/json
+
+{
+  "id": 1,
+  "userName": "test01",
+  "password": "test01",
+  "email": "test01@qq.com",
+  "age": 60,
+  "height": 180.5,
+  "address": "Shanghai",
+  "education": "XIAOXUE",
+  "income": 10000.0
+}
+###

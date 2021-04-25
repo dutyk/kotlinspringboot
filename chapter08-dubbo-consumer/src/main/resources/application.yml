@@ -1,0 +1,18 @@
+server:
+  port: 8088
+
+dubbo:
+  registry:
+    # 挂载到 Spring Cloud 注册中心
+    address: nacos://127.0.0.1:8848
+  cloud:
+    subscribed-services: dubbo-provider
+  consumer:
+    check: false
+spring:
+  application:
+    name: dubbo-consumer
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
